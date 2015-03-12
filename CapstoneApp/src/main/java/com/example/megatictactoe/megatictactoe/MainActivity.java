@@ -1,17 +1,26 @@
 package com.example.megatictactoe.megatictactoe;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 public class MainActivity extends Activity {
-
+    private Handler mHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mHandler.postDelayed(new Runnable() {
+            public void run() {
+                Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
+                MainActivity.this.startActivity(myIntent);
+                MainActivity.this.finish();
+            }
+        }, 5000);
     }
 
 
