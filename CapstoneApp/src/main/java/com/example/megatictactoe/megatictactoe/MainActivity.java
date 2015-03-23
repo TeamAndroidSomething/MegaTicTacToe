@@ -21,7 +21,8 @@ public class MainActivity extends Activity {
         // delays 5 seconds then launches the MenuActivity
         mHandler.postDelayed(new Runnable() {
             public void run() {
-                Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
+                //Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, GameActivity.class);
                 MainActivity.this.startActivity(myIntent);
                 MainActivity.this.finish();
             }
