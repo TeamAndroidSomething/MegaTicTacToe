@@ -216,7 +216,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton16"
+                        android:id="@+id/bA1"
                         android:background="@drawable/cell_button"
                         android:maxHeight="@dimen/cell_size"
                         android:maxWidth="@dimen/cell_size"
@@ -226,7 +226,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton17"
+                        android:id="@+id/bA2"
                         android:background="@drawable/cell_button"
                         android:maxHeight="@dimen/cell_size"
                         android:maxWidth="@dimen/cell_size"
@@ -236,7 +236,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton18"
+                        android:id="@+id/bA3"
                         android:background="@drawable/cell_button"
                         android:maxHeight="@dimen/cell_size"
                         android:maxWidth="@dimen/cell_size"
@@ -246,7 +246,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton19"
+                        android:id="@+id/bA4"
                         android:background="@drawable/cell_button"
                         android:maxHeight="@dimen/cell_size"
                         android:maxWidth="@dimen/cell_size"
@@ -256,7 +256,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton20"
+                        android:id="@+id/bA5"
                         android:background="@drawable/cell_button"
                         android:maxHeight="@dimen/cell_size"
                         android:maxWidth="@dimen/cell_size"
@@ -266,7 +266,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton21"
+                        android:id="@+id/bA6"
                         android:background="@drawable/cell_button"
                         android:maxHeight="@dimen/cell_size"
                         android:maxWidth="@dimen/cell_size"
@@ -391,7 +391,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton31"
+                        android:id="@+id/bB1"
                         android:background="@drawable/cell_button"
                         android:maxHeight="@dimen/cell_size"
                         android:maxWidth="@dimen/cell_size"
@@ -2357,7 +2357,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton200"
+                        android:id="@+id/bA50"
                         android:background="@drawable/cell_button"
                         android:maxHeight="@dimen/cell_size"
                         android:maxWidth="@dimen/cell_size"
