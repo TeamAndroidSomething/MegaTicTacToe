@@ -7,19 +7,13 @@ import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.os.Vibrator;
-
-import com.example.megatictactoe.logic.GameManager;
-import com.example.megatictactoe.megatictactoe.R;
-
 import java.util.HashMap;
 import java.util.Map;
+import com.example.megatictactoe.megatictactoe.R;
+import com.example.megatictactoe.logic.GameManager;
 
 
 public class GameActivity extends Activity {
@@ -28,7 +22,7 @@ public class GameActivity extends Activity {
     private char TURN;
     private GameManager gm;
     private Map<String, ImageButton> buttons;
-    private Context context;
+    private View.OnLongClickListener buttonLongClickListener;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +32,25 @@ public class GameActivity extends Activity {
         // Class object for handling game state checks
         gm = new GameManager();
 
-
+        // To apply vibrate feature to X,O selections
         final Vibrator vib = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 
+        // Master table in game layout
         final TableLayout gameTable = (TableLayout) findViewById(R.id.gameTable);
+
+        // Defaulting to 15 for now - later we'll grab from menu
         TABLE_SIZE = 15;
+
+        // Who's turn is it?  - defaults to X
         TURN = 'X';
 
-        View.OnLongClickListener buttonLongClickListener = new View.OnLongClickListener() {
+        buttonLongClickListener = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 if (gm.checkIfEmpty(v)) {
-                    setButtonState(v, vib);
                     gm.checkForWin(v);
-                };
+                    setButtonState(v, vib);
+                }
                 return true;
             }
         };
@@ -64,21 +63,26 @@ public class GameActivity extends Activity {
             // create row and add to game Table in XML
             TableRow row = new TableRow(this);
             gameTable.addView(row);
+            // Add buttons to the new row
             for (int colNum = 1; colNum < TABLE_SIZE+1; colNum++) {
-                // add buttons to row
+                // provide button with map key i.e. "b1_15" for row 1, column 15
                 buttons.put("b" + rowNum + "_" + colNum, new ImageButton(this));
+                // set button background to drawable
                 buttons.get("b" + rowNum + "_" + colNum)
                         .setBackground(getResources().getDrawable(R.drawable.cell_button));
+                // Add to button to row, via key
                 row.addView(buttons.get("b" + rowNum + "_" + colNum));
+                // Add longClick action to button, via key
                 buttons.get("b" + rowNum + "_" + colNum).setLongClickable(true);
                 buttons.get("b" + rowNum + "_" + colNum)
                         .setOnLongClickListener(buttonLongClickListener);
             }
         }
-
-        context = this.getApplicationContext();
     }
 
+    // Set button drawable depending on who's move it is.
+    // Mobile device vibrates on longClick to place marker.
+    // Turn variable is flipped after marker placed.
     private void setButtonState(View iB, Vibrator vib) {
         switch (TURN) {
             case 'X':

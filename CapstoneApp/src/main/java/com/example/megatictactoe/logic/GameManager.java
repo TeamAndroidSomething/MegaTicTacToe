@@ -17,21 +17,17 @@ public class GameManager {
     Context mContext;
 
     public GameManager () {
-
+        // in case we need to add anything to the constructor
     };
 
     public void checkForWin(View iB) {
-//        mContext = context.getApplicationContext();
 
     }
 
     public boolean checkIfEmpty(View iB) {
-//        mContext = context.getApplicationContext();
-        if (iB.getBackground().equals(R.drawable.cell_button)) {
-            return true;
-        }
-        return false;
+    // some check hinging on properties of the button view
+        return true;
     }
 
-    public ArrayList<ArrayList<String>> list;
+    public ArrayList<ArrayList<String>> boardlist;
 }
