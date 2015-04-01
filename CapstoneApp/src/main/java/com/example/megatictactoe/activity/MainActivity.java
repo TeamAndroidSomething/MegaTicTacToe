@@ -17,14 +17,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // hides the actionbar
-        getActionBar().hide();
 
         // delays 5 seconds then launches the MenuActivity
         mHandler.postDelayed(new Runnable() {
             public void run() {
                 //Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
-                Intent myIntent = new Intent(MainActivity.this, GameActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
                 MainActivity.this.startActivity(myIntent);
                 MainActivity.this.finish();
             }
