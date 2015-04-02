@@ -3,7 +3,6 @@ package com.example.megatictactoe.logic;
 import android.content.Context;
 import android.view.View;
 
-import com.example.megatictactoe.megatictactoe.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ public class GameManager {
 
     Context mContext;
 
-    public GameManager () {
+    public GameManager (int tableSize) {
         // in case we need to add anything to the constructor
     };
 

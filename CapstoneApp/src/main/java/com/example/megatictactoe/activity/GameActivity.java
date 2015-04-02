@@ -29,17 +29,17 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_dyn);
 
+        // Defaulting to 15 for now - later we'll grab from menu
+        TABLE_SIZE = 15;
+
         // Class object for handling game state checks
-        gm = new GameManager();
+        gm = new GameManager(TABLE_SIZE);
 
         // To apply vibrate feature to X,O selections
         final Vibrator vib = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 
         // Master table in game layout
         final TableLayout gameTable = (TableLayout) findViewById(R.id.gameTable);
-
-        // Defaulting to 15 for now - later we'll grab from menu
-        TABLE_SIZE = 15;
 
         // Who's turn is it?  - defaults to X
         TURN = 'X';
