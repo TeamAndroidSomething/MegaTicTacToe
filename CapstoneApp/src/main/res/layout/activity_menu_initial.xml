@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.megatictactoe.activity.MenuActivity"
+    android:background="@drawable/wood_background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/cell_size">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="@dimen/cell_size"
+                android:text="New Game"
+                android:id="@+id/bNewGame"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/menu_button_lg"
+                android:textColor="#000000"
+                android:padding="0dp"
+                android:layout_margin="10dp"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/cell_size">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bNewGame"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Game Tiles:"
+                    android:id="@+id/textView"
+                    android:textColor="#FFFFFF"
+                    android:paddingRight="10dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/cell_size"
+                    android:text="Select Size"
+                    android:id="@+id/bSelectSize"
+                    android:background="@drawable/menu_button_sm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lsizesLayout"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/cell_size"
+                    android:text="15x15"
+                    android:id="@+id/b15x15"
+                    android:background="@drawable/menu_button_sm"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/cell_size"
+                    android:text="19x19"
+                    android:id="@+id/b19x19"
+                    android:background="@drawable/menu_button_sm"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/cell_size"
+                    android:text="24x24"
+                    android:id="@+id/b24x24"
+                    android:background="@drawable/menu_button_sm"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="bottom">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exit"
+                android:id="@+id/bExit"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/menu_button_sm"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,7 +1,6 @@
 package com.example.megatictactoe.activity;
 
 import android.app.Activity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,28 +8,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-
 
 import com.example.megatictactoe.megatictactoe.R;
 
 
-public class MenuActivity extends Activity implements View.OnClickListener {
+public class MenuActivityResume extends Activity implements View.OnClickListener {
 
     int TILE_SIZE;
     Boolean TileSelectorLayoutVisible = false;
     View lsizesLayout;
 
     Button bNewGame;
+    Button bResumeGame;
     Button buttonSelectSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_initial);
+        setContentView(R.layout.activity_menu_resume);
 
         // Finding all of the Views
         bNewGame = (Button)findViewById(R.id.bNewGame);
+        bResumeGame = (Button)findViewById(R.id.bResumeGame);
         buttonSelectSize = (Button) findViewById(R.id.bSelectSize);
         View b15x15 = this.findViewById(R.id.b15x15);
         View b19x19 = this.findViewById(R.id.b19x19);
@@ -41,6 +40,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
         // adds on click listeners to each object that needs it
         bNewGame.setOnClickListener(this);
+        bResumeGame.setOnClickListener(this);
         buttonSelectSize.setOnClickListener(this);
         b15x15.setOnClickListener(this);
         b19x19.setOnClickListener(this);
@@ -51,6 +51,9 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         bNewGame.setEnabled(false);
         bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_button_lg_disabled));
         bNewGame.setTextColor(Color.LTGRAY);
+
+        // Hides Resume Game Button to start
+        bResumeGame.setVisibility(View.GONE);
 
         //hides the size layout to start
         lsizesLayout.setVisibility(View.GONE);
@@ -130,9 +133,19 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             }
 
             case R.id.bNewGame:{
-                Intent myIntent = new Intent(MenuActivity.this, GameActivity.class);
+                Intent myIntent = new Intent(MenuActivityResume.this, GameActivity.class);
                 myIntent.putExtra("tiles", TILE_SIZE);
-                MenuActivity.this.startActivity(myIntent);
+
+                MenuActivityResume.this.startActivity(myIntent);
+                bResumeGame.setVisibility(View.VISIBLE);
+                break;
+            }
+
+            case R.id.bResumeGame:{
+                Intent myIntent = new Intent(MenuActivityResume.this, GameActivity.class);
+                myIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                startActivity(myIntent);
+                break;
             }
 
             case R.id.bExit:{

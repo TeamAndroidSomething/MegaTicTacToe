@@ -12,7 +12,9 @@
         <activity
             android:name="com.example.megatictactoe.activity.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,12 +27,14 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
 
+
+
         </activity>
         <activity
-            android:name="com.example.megatictactoe.activity.MenuActivity"
-            android:label="@string/title_activity_menu" >
+            android:name="com.example.megatictactoe.activity.MenuActivityResume"
+            android:label="@string/title_activity_menu"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-
 
     </application>
 

@@ -24,8 +24,8 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_dyn);
 
-        // Defaulting to 15 for now - later we'll grab from menu
-        TABLE_SIZE = 15;
+        Bundle extras = getIntent().getExtras();
+        TABLE_SIZE = extras.getInt("tiles");
 
         // Master table in game layout
         final TableLayout gameTable = (TableLayout) findViewById(R.id.gameTable);

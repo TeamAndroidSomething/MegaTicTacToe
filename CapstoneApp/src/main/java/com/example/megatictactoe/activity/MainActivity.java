@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
         mHandler.postDelayed(new Runnable() {
             public void run() {
                 //Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
-                Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, MenuActivityResume.class);
                 MainActivity.this.startActivity(myIntent);
                 MainActivity.this.finish();
             }
