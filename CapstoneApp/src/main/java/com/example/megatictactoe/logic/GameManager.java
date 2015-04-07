@@ -8,8 +8,6 @@ import android.widget.ImageButton;
 import com.example.megatictactoe.megatictactoe.R;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by davidlescard on 3/30/15.
@@ -20,7 +18,9 @@ public class GameManager {
     Context mContext;
 
     // ArrayList View of the board
-    public ArrayList<ArrayList<String>> boardlist = new ArrayList<ArrayList<String>>();
+    private ArrayList<ArrayList<String>> boardlist = new ArrayList<ArrayList<String>>();
+    private int lastX = -1;
+    private int lastY = -1;
 
     public GameManager (int boardSize) {
         // creates the ArrayList of ArrayLists and fills it with empty strings
@@ -31,10 +31,12 @@ public class GameManager {
             }
             boardlist.add(row);
         }
-    };
+    }
 
     public void checkForWin(View iB) {
         // TODO: This
+        // using lastX and lastY check if there is a win.
+        Log.v("errorid","checking win for: (" + lastX + "," + lastY + ")");
     }
 
     public boolean checkIfEmpty(View iB, char TURN) {
@@ -51,12 +53,9 @@ public class GameManager {
         int row = Integer.parseInt(SplitString[0]) - 1;
         int col = Integer.parseInt(SplitString[1]) - 1;
 
-        // for debugging remove in final version
-        Log.v("errorid","row: " + row);
-        Log.v("errorid","col: " + col);
 
         // checks if spot available if
-        if (boardlist.get(row).get(col) == ""){
+        if (boardlist.get(row).get(col).equals("")){
             // make a copy of the row
             ArrayList<String> newRow = boardlist.get(row);
 
@@ -69,10 +68,12 @@ public class GameManager {
             // for debugging, prints ArrayList<ArrayList<String>>
             Log.v("errorid",boardlist.toString());
 
+            //sets lastX and lastY so we know the last move placed
+            lastX = row;
+            lastY = col;
+
             // returns that spot is available
             return true;
-
-
         }
 
         // spot not available since it didn't qualify the earlier check
