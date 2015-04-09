@@ -29,7 +29,7 @@ public class GameActivityActionListener implements View.OnLongClickListener
     @Override
     public boolean onLongClick(View v) {
         if (gm.checkIfEmpty(v, TURN)) {
-            gm.checkForWin(v);
+            boolean isWin = gm.checkForWin(v);
             setButtonState(v);
         }
         return true;
