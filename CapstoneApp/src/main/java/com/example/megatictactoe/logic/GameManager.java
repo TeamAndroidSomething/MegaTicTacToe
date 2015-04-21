@@ -11,8 +11,10 @@ import java.util.ArrayList;
 
 /**
  * Created by davidlescard on 3/30/15.
+ * modify by Yuan chen on 4/20/15.
  */
-public class GameManager {
+public class GameManager
+{
 
     // Context to change and edit views
     Context mContext;
@@ -26,11 +28,14 @@ public class GameManager {
 
     private int boardSize = -1;
 
-    public GameManager (int boardSize) {
+    public GameManager (int boardSize)
+    {
         // creates the ArrayList of ArrayLists and fills it with empty strings
-        for(int i = 0; i < boardSize; i++){
+        for(int i = 0; i < boardSize; i++)
+        {
             ArrayList<String> row = new ArrayList<String>();
-            for(int j = 0; j < boardSize; j++){
+            for(int j = 0; j < boardSize; j++)
+            {
                 row.add("");
             }
             boardlist.add(row);
@@ -40,7 +45,8 @@ public class GameManager {
         this.boardSize = boardSize;
     }
 
-    public boolean checkForWin(View iB) {
+    public boolean checkForWin(View iB)
+    {
         // TODO: This
 
         int checkUptoDown = checkNextUp(lastX, lastY) + checkNextDown(lastX,lastY) + 1;
@@ -53,8 +59,10 @@ public class GameManager {
         Log.v("errorid","checking win for: (" + lastX + "," + lastY + ")");
         Log.v("errorid","Up,Down:"  + checkUptoDown + " Left,Right:" + checkLefttoRight +  " DownLeft,UpRight:" + checkDownLefttoUpRight +  " UpLeft,DownRight:" + checkUpLefttoDownRight);
 
-        if ( (checkUptoDown >= 5) | (checkLefttoRight >= 5) | (checkDownLefttoUpRight >= 5) | (checkUpLefttoDownRight >= 5) ){
+        if ( (checkUptoDown >= 5) || (checkLefttoRight >= 5) || (checkDownLefttoUpRight >= 5) || (checkUpLefttoDownRight >= 5) )
+        {
             // TODO: check if board is entirely full and no one can move.
+            Log.v("errorid","WIN");
             return true;
         }
 
@@ -63,14 +71,16 @@ public class GameManager {
     }
 
     // these two check from down left to up right for a win
-    private int checkNextUpRight(int X, int Y){
+    private int checkNextUpRight(int X, int Y)
+    {
 
         int NewX = X + 1;
         int NewY = Y + 1;
 
         // checks if the new spot is outside the board
         if((NewX < boardSize) & (NewY < boardSize)){
-            if (boardlist.get(NewX).get(NewY).equals(lastTurn)) {
+            if (boardlist.get(NewX).get(NewY).equals(lastTurn))
+            {
                 return checkNextUpRight(NewX, NewY) + 1;
             }
         }
@@ -78,13 +88,16 @@ public class GameManager {
 
     }
 
-    private int checkNextDownLeft(int X, int Y){
+    private int checkNextDownLeft(int X, int Y)
+    {
         int NewX = X - 1;
         int NewY = Y - 1;
 
         // checks if the new spot is outside the board
-        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0)){
-            if (boardlist.get(NewX).get(NewY).equals(lastTurn)) {
+        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0))
+        {
+            if (boardlist.get(NewX).get(NewY).equals(lastTurn))
+            {
                 return checkNextDownLeft(NewX, NewY) + 1;
             }
         }
@@ -92,25 +105,31 @@ public class GameManager {
     }
 
     // checks left to right
-    private int checkNextRight(int X, int Y){
+    private int checkNextRight(int X, int Y)
+    {
         int NewX = X + 1;
         int NewY = Y;
 
         // checks if the new spot is outside the board
-        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0)){
-            if (boardlist.get(NewX).get(NewY).equals(lastTurn)) {
+        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0))
+        {
+            if (boardlist.get(NewX).get(NewY).equals(lastTurn))
+            {
                 return checkNextRight(NewX, NewY) + 1;
             }
         }
         return 0;
     }
-    private int checkNextLeft(int X, int Y){
+    private int checkNextLeft(int X, int Y)
+    {
         int NewX = X - 1;
         int NewY = Y;
 
         // checks if the new spot is outside the board
-        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0)){
-            if (boardlist.get(NewX).get(NewY).equals(lastTurn)) {
+        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0))
+        {
+            if (boardlist.get(NewX).get(NewY).equals(lastTurn))
+            {
                 return checkNextLeft(NewX, NewY) + 1;
             }
         }
@@ -118,25 +137,31 @@ public class GameManager {
     }
 
     // checks up left to down right
-    private int checkNextUpLeft(int X, int Y){
+    private int checkNextUpLeft(int X, int Y)
+    {
         int NewX = X + 1;
         int NewY = Y - 1;
 
         // checks if the new spot is outside the board
-        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0)){
-            if (boardlist.get(NewX).get(NewY).equals(lastTurn)) {
+        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0))
+        {
+            if (boardlist.get(NewX).get(NewY).equals(lastTurn))
+            {
                 return checkNextUpLeft(NewX, NewY) + 1;
             }
         }
         return 0;
     }
-    private int checkNextDownRight(int X, int Y){
+    private int checkNextDownRight(int X, int Y)
+    {
         int NewX = X - 1;
         int NewY = Y + 1;
 
         // checks if the new spot is outside the board
-        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0)){
-            if (boardlist.get(NewX).get(NewY).equals(lastTurn)) {
+        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0))
+        {
+            if (boardlist.get(NewX).get(NewY).equals(lastTurn))
+            {
                 return checkNextDownRight(NewX, NewY) + 1;
             }
         }
@@ -145,34 +170,39 @@ public class GameManager {
 
 
     //checks up and down
-    private int checkNextUp(int X, int Y){
+    private int checkNextUp(int X, int Y)
+    {
         int NewX = X;
         int NewY = Y + 1;
 
         // checks if the new spot is outside the board
-        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0)){
-            if (boardlist.get(NewX).get(NewY).equals(lastTurn)) {
+        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0))
+        {
+            if (boardlist.get(NewX).get(NewY).equals(lastTurn))
+            {
                 return checkNextUp(NewX, NewY) + 1;
             }
         }
         return 0;
     }
-    private int checkNextDown(int X, int Y){
+    private int checkNextDown(int X, int Y)
+    {
         int NewX = X;
         int NewY = Y - 1;
 
         // checks if the new spot is outside the board
-        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0)){
-            if (boardlist.get(NewX).get(NewY).equals(lastTurn)) {
+        if((NewX < boardSize) & (NewY < boardSize) & (NewX >= 0) & (NewY >= 0))
+        {
+            if (boardlist.get(NewX).get(NewY).equals(lastTurn))
+            {
                 return checkNextDown(NewX, NewY) + 1;
             }
         }
         return 0;
     }
 
-
-
-    public boolean checkIfEmpty(View iB, char TURN) {
+    public boolean checkIfEmpty(View iB, char TURN)
+    {
         // declares iB as an ImageButton (might be able to remove)
         ImageButton bb = (ImageButton) iB;
 
@@ -188,7 +218,8 @@ public class GameManager {
 
 
         // checks if spot available if
-        if (boardlist.get(row).get(col).equals("")){
+        if (boardlist.get(row).get(col).equals(""))
+        {
             // make a copy of the row
             ArrayList<String> newRow = boardlist.get(row);
 
