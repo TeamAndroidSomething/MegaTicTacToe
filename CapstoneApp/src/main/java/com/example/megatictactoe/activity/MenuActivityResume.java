@@ -137,7 +137,10 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
                 myIntent.putExtra("tiles", TILE_SIZE);
 
                 MenuActivityResume.this.startActivity(myIntent);
-                bResumeGame.setVisibility(View.VISIBLE);
+                /*
+                 * currently disabled
+                    bResumeGame.setVisibility(View.VISIBLE);
+                */
                 break;
             }
 
