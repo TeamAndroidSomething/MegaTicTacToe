@@ -43,16 +43,23 @@ public class GameManager
 
     public boolean checkForWin(View iB)
     {
-        int checkUptoDown = checkNextUp(lastX, lastY) + checkNextDown(lastX,lastY) + 1;
-        int checkLefttoRight = checkNextLeft(lastX, lastY) + checkNextRight(lastX, lastY) + 1;
-        int checkDownLefttoUpRight = checkNextDownLeft(lastX, lastY) + checkNextUpRight(lastX, lastY) + 1;
-        int checkUpLefttoDownRight = checkNextUpLeft(lastX, lastY) + checkNextDownRight(lastX, lastY) + 1;
+        int checkUptoDown = checkNextUp(lastX, lastY)
+                + checkNextDown(lastX,lastY) + 1;
+        int checkLefttoRight = checkNextLeft(lastX, lastY)
+                + checkNextRight(lastX, lastY) + 1;
+        int checkDownLefttoUpRight = checkNextDownLeft(lastX, lastY)
+                + checkNextUpRight(lastX, lastY) + 1;
+        int checkUpLefttoDownRight = checkNextUpLeft(lastX, lastY)
+                + checkNextDownRight(lastX, lastY) + 1;
 
         // using lastX and lastY check if there is a win.
         Log.v("errorid","checking win for: (" + lastX + "," + lastY + ")");
-        Log.v("errorid","Up,Down:"  + checkUptoDown + " Left,Right:" + checkLefttoRight +  " DownLeft,UpRight:" + checkDownLefttoUpRight +  " UpLeft,DownRight:" + checkUpLefttoDownRight);
+        Log.v("errorid","Up,Down:"  + checkUptoDown + " Left,Right:" + checkLefttoRight
+                + " DownLeft,UpRight:" + checkDownLefttoUpRight
+                +  " UpLeft,DownRight:" + checkUpLefttoDownRight);
 
-        if ( (checkUptoDown >= 5) || (checkLefttoRight >= 5) || (checkDownLefttoUpRight >= 5) || (checkUpLefttoDownRight >= 5) )
+        if ( (checkUptoDown >= 5) || (checkLefttoRight >= 5) || (checkDownLefttoUpRight >= 5)
+                || (checkUpLefttoDownRight >= 5) )
         {
             // check if board is entirely full and no one can move.
             Log.v("errorid","WIN");
