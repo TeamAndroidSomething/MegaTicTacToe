@@ -49,8 +49,8 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
 
         // Disables the New Game Button to start
         bNewGame.setEnabled(false);
-        bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_button_lg_disabled));
-        bNewGame.setTextColor(Color.LTGRAY);
+        bNewGame.setBackground(getResources().getDrawable(R.drawable.new_game_disabled));
+//        bNewGame.setTextColor(Color.LTGRAY);
 
         // Hides Resume Game Button to start
         bResumeGame.setVisibility(View.GONE);
@@ -103,8 +103,8 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
                 TILE_SIZE = 15;
                 buttonSelectSize.setText("15x15");
                 bNewGame.setEnabled(true);
-                bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_button_lg));
-                bNewGame.setTextColor(Color.BLACK);
+                bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
+//                bNewGame.setTextColor(Color.BLACK);
                 lsizesLayout.setVisibility(View.GONE);
                 TileSelectorLayoutVisible = false;
                 break;
@@ -114,8 +114,8 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
                 TILE_SIZE = 19;
                 buttonSelectSize.setText("19x19");
                 bNewGame.setEnabled(true);
-                bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_button_lg));
-                bNewGame.setTextColor(Color.BLACK);
+                bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
+//                bNewGame.setTextColor(Color.BLACK);
                 lsizesLayout.setVisibility(View.GONE);
                 TileSelectorLayoutVisible = false;
                 break;
@@ -125,8 +125,8 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
                 TILE_SIZE = 24;
                 buttonSelectSize.setText("24x24");
                 bNewGame.setEnabled(true);
-                bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_button_lg));
-                bNewGame.setTextColor(Color.BLACK);
+                bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
+//                bNewGame.setTextColor(Color.BLACK);
                 lsizesLayout.setVisibility(View.GONE);
                 TileSelectorLayoutVisible = false;
                 break;
@@ -137,10 +137,8 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
                 myIntent.putExtra("tiles", TILE_SIZE);
 
                 MenuActivityResume.this.startActivity(myIntent);
-                /*
-                 * currently disabled
-                    bResumeGame.setVisibility(View.VISIBLE);
-                */
+
+
                 break;
             }
 
@@ -156,5 +154,13 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
                 break;
             }
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        buttonSelectSize.setText("Select Size");
+        bResumeGame.setVisibility(View.VISIBLE);
     }
 }
