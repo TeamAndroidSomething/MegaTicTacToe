@@ -75,9 +75,9 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/cell_size"
-                    android:text="Select Size"
+                    android:text=""
                     android:id="@+id/bSelectSize"
-                    android:background="@drawable/menu_button_sm" />
+                    android:background="@drawable/menu_select_size" />
             </LinearLayout>
 
             <LinearLayout
@@ -125,10 +125,10 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exit"
+                android:text=""
                 android:id="@+id/bExit"
                 android:layout_alignParentBottom="true"
-                android:background="@drawable/menu_button_sm"
+                android:background="@drawable/menu_exit"
                 android:layout_margin="10dp" />
         </LinearLayout>
     </LinearLayout>

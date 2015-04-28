@@ -101,7 +101,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
 
             case R.id.b15x15: {
                 TILE_SIZE = 15;
-                buttonSelectSize.setText("15x15");
+//                buttonSelectSize.setText("15x15");
                 bNewGame.setEnabled(true);
                 bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
 //                bNewGame.setTextColor(Color.BLACK);
@@ -112,7 +112,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
 
             case R.id.b19x19: {
                 TILE_SIZE = 19;
-                buttonSelectSize.setText("19x19");
+//                buttonSelectSize.setText("19x19");
                 bNewGame.setEnabled(true);
                 bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
 //                bNewGame.setTextColor(Color.BLACK);
@@ -123,7 +123,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
 
             case R.id.b24x24: {
                 TILE_SIZE = 24;
-                buttonSelectSize.setText("24x24");
+//                buttonSelectSize.setText("24x24");
                 bNewGame.setEnabled(true);
                 bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
 //                bNewGame.setTextColor(Color.BLACK);
@@ -160,7 +160,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
     protected void onStop() {
         super.onStop();
 
-        buttonSelectSize.setText("Select Size");
+//        buttonSelectSize.setText("Select Size");
         bResumeGame.setVisibility(View.VISIBLE);
     }
 }
