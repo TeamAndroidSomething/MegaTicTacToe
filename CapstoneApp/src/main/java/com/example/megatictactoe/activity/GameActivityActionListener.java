@@ -2,7 +2,6 @@ package com.example.megatictactoe.activity;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Vibrator;
 import android.view.View;
 import com.example.megatictactoe.logic.GameManager;

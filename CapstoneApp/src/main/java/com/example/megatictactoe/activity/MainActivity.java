@@ -18,10 +18,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-        // delays 5 seconds then launches the MenuActivity
+        // delays 5 seconds then launches the MenuActivityResume
         mHandler.postDelayed(new Runnable() {
             public void run() {
-                //Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
                 Intent myIntent = new Intent(MainActivity.this, MenuActivityResume.class);
                 MainActivity.this.startActivity(myIntent);
                 MainActivity.this.finish();

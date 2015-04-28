@@ -2,13 +2,11 @@ package com.example.megatictactoe.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import com.example.megatictactoe.megatictactoe.R;
 
 
@@ -16,7 +14,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
 
     int TILE_SIZE;
     Boolean TileSelectorLayoutVisible = false;
-    View lsizesLayout;
+    View LSizesLayout;
 
     Button bNewGame;
     Button bResumeGame;
@@ -35,8 +33,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
         View b19x19 = this.findViewById(R.id.b19x19);
         View b24x24 = this.findViewById(R.id.b24x24);
         View bExit = this.findViewById(R.id.bExit);
-
-        lsizesLayout = this.findViewById(R.id.lsizesLayout);
+        LSizesLayout = this.findViewById(R.id.lsizesLayout);
 
         // adds on click listeners to each object that needs it
         bNewGame.setOnClickListener(this);
@@ -50,14 +47,12 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
         // Disables the New Game Button to start
         bNewGame.setEnabled(false);
         bNewGame.setBackground(getResources().getDrawable(R.drawable.new_game_disabled));
-//        bNewGame.setTextColor(Color.LTGRAY);
 
         // Hides Resume Game Button to start
         bResumeGame.setVisibility(View.GONE);
 
         //hides the size layout to start
-        lsizesLayout.setVisibility(View.GONE);
-
+        LSizesLayout.setVisibility(View.GONE);
     }
 
 
@@ -79,7 +74,6 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -90,10 +84,10 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
 
             case R.id.bSelectSize: {
                 if (TileSelectorLayoutVisible){
-                    lsizesLayout.setVisibility(View.GONE);
+                    LSizesLayout.setVisibility(View.GONE);
                     TileSelectorLayoutVisible = false;
                 } else {
-                    lsizesLayout.setVisibility(View.VISIBLE);
+                    LSizesLayout.setVisibility(View.VISIBLE);
                     TileSelectorLayoutVisible = true;
                 }
                 break;
@@ -101,33 +95,27 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
 
             case R.id.b15x15: {
                 TILE_SIZE = 15;
-//                buttonSelectSize.setText("15x15");
                 bNewGame.setEnabled(true);
                 bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
-//                bNewGame.setTextColor(Color.BLACK);
-                lsizesLayout.setVisibility(View.GONE);
+                LSizesLayout.setVisibility(View.GONE);
                 TileSelectorLayoutVisible = false;
                 break;
             }
 
             case R.id.b19x19: {
                 TILE_SIZE = 19;
-//                buttonSelectSize.setText("19x19");
                 bNewGame.setEnabled(true);
                 bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
-//                bNewGame.setTextColor(Color.BLACK);
-                lsizesLayout.setVisibility(View.GONE);
+                LSizesLayout.setVisibility(View.GONE);
                 TileSelectorLayoutVisible = false;
                 break;
             }
 
             case R.id.b24x24: {
                 TILE_SIZE = 24;
-//                buttonSelectSize.setText("24x24");
                 bNewGame.setEnabled(true);
                 bNewGame.setBackground(getResources().getDrawable(R.drawable.menu_new_game));
-//                bNewGame.setTextColor(Color.BLACK);
-                lsizesLayout.setVisibility(View.GONE);
+                LSizesLayout.setVisibility(View.GONE);
                 TileSelectorLayoutVisible = false;
                 break;
             }
@@ -135,10 +123,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
             case R.id.bNewGame:{
                 Intent myIntent = new Intent(MenuActivityResume.this, GameActivity.class);
                 myIntent.putExtra("tiles", TILE_SIZE);
-
                 MenuActivityResume.this.startActivity(myIntent);
-
-
                 break;
             }
 
@@ -159,8 +144,6 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
     @Override
     protected void onStop() {
         super.onStop();
-
-//        buttonSelectSize.setText("Select Size");
         bResumeGame.setVisibility(View.VISIBLE);
     }
 }

@@ -88,6 +88,4 @@ public class GameActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }
