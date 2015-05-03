@@ -13,7 +13,6 @@ public class GameActivityActionListener implements View.OnLongClickListener
 {
     private char TURN;
     private Context cont;
-    private GameManager gm;
     private boolean gameWin;
 
     public GameActivityActionListener(int TABLE_SIZE, Context cont)
@@ -28,7 +27,7 @@ public class GameActivityActionListener implements View.OnLongClickListener
         final Vibrator vib = (Vibrator) cont.getSystemService(Context.VIBRATOR_SERVICE);
 
         // Class object for handling game state checks
-        this.gm = new GameManager(TABLE_SIZE);
+        //this.gm = new GameManager(TABLE_SIZE);
 
         // Who's turn is it?  - defaults to X
         TURN = 'X';
@@ -40,9 +39,9 @@ public class GameActivityActionListener implements View.OnLongClickListener
         // Add a boolean to freeze the turn of button state when wining occur
         if(gameWin == false)
         {
-            if (gm.checkIfEmpty(v, TURN))
+            if (GameManager.checkIfEmpty(v, TURN))
             {
-                gameWin = gm.checkForWin(v);
+                gameWin = GameManager.checkForWin(v);
                 if (gameWin) {
                     final Dialog dlg = new Dialog(cont);
                     dlg.setContentView(R.layout.win_dialog);

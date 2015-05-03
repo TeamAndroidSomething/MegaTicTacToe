@@ -2,11 +2,14 @@ package com.example.megatictactoe.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.megatictactoe.logic.GameManager;
 import com.example.megatictactoe.megatictactoe.R;
 
 
@@ -122,7 +125,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
 
             case R.id.bNewGame:{
                 Intent myIntent = new Intent(MenuActivityResume.this, GameActivity.class);
-                myIntent.putExtra("tiles", TILE_SIZE);
+                GameManager.CreateBoard(TILE_SIZE);
                 MenuActivityResume.this.startActivity(myIntent);
                 break;
             }

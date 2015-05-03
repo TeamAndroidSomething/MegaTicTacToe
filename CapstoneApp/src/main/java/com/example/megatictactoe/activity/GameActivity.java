@@ -2,14 +2,19 @@ package com.example.megatictactoe.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.example.megatictactoe.logic.GameManager;
 import com.example.megatictactoe.megatictactoe.R;
 
 
@@ -24,8 +29,7 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_dyn);
 
-        Bundle extras = getIntent().getExtras();
-        TABLE_SIZE = extras.getInt("tiles");
+        TABLE_SIZE = GameManager.getBoardSize();
 
         // Master table in game layout
         final TableLayout gameTable = (TableLayout) findViewById(R.id.gameTable);
@@ -36,8 +40,55 @@ public class GameActivity extends Activity {
         //OnClickListener
         buttonLongClickListener = new GameActivityActionListener(TABLE_SIZE,this);
 
+
+        // New Create game grid
+
+        ArrayList<ArrayList<String>> board = GameManager.getBoard();
+        Log.v("errorid", board.toString());
+
+        for (int rowNum = 1; rowNum < TABLE_SIZE + 1; rowNum++) {
+            // create row and add to game Table in XML
+            TableRow row = new TableRow(this);
+            gameTable.addView(row);
+            // Add buttons to the new row
+            for (int colNum = 1; colNum < TABLE_SIZE+1; colNum++) {
+                //button name
+                String bName = "b" + rowNum + "_" + colNum;
+
+                // Temp button created for each button
+                ImageButton bTemp = new ImageButton(this);
+
+                // provide button with map key i.e. "b1_15" for row 1, column 15
+                buttons.put(bName, bTemp);
+
+                // set button background to drawable
+                Log.v("errorid","got here");
+                if (board.get(rowNum-1).get(colNum-1).equals("")){
+                    bTemp.setBackground(getResources().getDrawable(R.drawable.cell_button));
+                } else if(board.get(rowNum-1).get(colNum-1).equals("X")) {
+                    bTemp.setBackground(getResources().getDrawable(R.drawable.cell_x_up));
+                }else if(board.get(rowNum-1).get(colNum-1).equals("O")) {
+                    bTemp.setBackground(getResources().getDrawable(R.drawable.cell_o_up));
+                }
+
+
+
+                // Add to button to row, via key
+                row.addView(buttons.get(bName));
+
+                // Add longClick action to button, via key
+                bTemp.setLongClickable(true);
+                bTemp.setTag(bName);
+                bTemp.setOnLongClickListener(buttonLongClickListener);
+
+
+            }
+        }
+
+
+        /*
         // Create game grid
-        for (int rowNum = 1; rowNum < TABLE_SIZE+1; rowNum++) {
+        for (int rowNum = 1; rowNum < TABLE_SIZE + 1; rowNum++) {
             // create row and add to game Table in XML
             TableRow row = new TableRow(this);
             gameTable.addView(row);
@@ -65,6 +116,8 @@ public class GameActivity extends Activity {
                 bTemp.setOnLongClickListener(buttonLongClickListener);
             }
         }
+
+        */
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.megatictactoe.logic;
 
+import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
@@ -10,21 +11,37 @@ import java.util.ArrayList;
  * Created by davidlescard on 3/30/15.
  * modify by Yuan chen on 4/20/15.
  */
-public class GameManager
+public class GameManager extends Application
 {
     // Context to change and edit views
     Context mContext;
 
     // ArrayList View of the board
-    private ArrayList<ArrayList<String>> boardList = new ArrayList<ArrayList<String>>();
+    private static ArrayList<ArrayList<String>> boardList = new ArrayList<ArrayList<String>>();
 
-    private String lastTurn = "error";
-    private int lastX = -1;
-    private int lastY = -1;
+    private static String lastTurn = "error";
+    private static int lastX = -1;
+    private static int lastY = -1;
 
-    private int boardSize = -1;
+    private static int boardSize = -1;
 
-    public GameManager (int boardSize)
+
+    public GameManager(){
+
+    }
+
+    public static ArrayList<ArrayList<String>> getBoard(){
+
+        return boardList;
+
+    }
+
+    public static int getBoardSize(){
+
+        return boardSize;
+    }
+
+    public static void CreateBoard (int boardSize)
     {
         // creates the ArrayList of ArrayLists and fills it with empty strings
         for(int i = 0; i < boardSize; i++)
@@ -38,10 +55,10 @@ public class GameManager
         }
 
         //logs the board size, used in looking for winning condition
-        this.boardSize = boardSize;
+        GameManager.boardSize = boardSize;
     }
 
-    public boolean checkForWin(View iB)
+    public static boolean checkForWin(View iB)
     {
         int checkUptoDown = checkNextUp(lastX, lastY)
                 + checkNextDown(lastX,lastY) + 1;
@@ -69,7 +86,7 @@ public class GameManager
     }
 
     // these two check from down left to up right for a win
-    private int checkNextUpRight(int X, int Y)
+    private static int checkNextUpRight(int X, int Y)
     {
         int NewX = X + 1;
         int NewY = Y + 1;
@@ -84,7 +101,7 @@ public class GameManager
         return 0;
     }
 
-    private int checkNextDownLeft(int X, int Y)
+    private static int checkNextDownLeft(int X, int Y)
     {
         int NewX = X - 1;
         int NewY = Y - 1;
@@ -101,7 +118,7 @@ public class GameManager
     }
 
     // checks left to right
-    private int checkNextRight(int X, int Y)
+    private static int checkNextRight(int X, int Y)
     {
         int NewX = X + 1;
         int NewY = Y;
@@ -116,7 +133,7 @@ public class GameManager
         }
         return 0;
     }
-    private int checkNextLeft(int X, int Y)
+    private static int checkNextLeft(int X, int Y)
     {
         int NewX = X - 1;
         int NewY = Y;
@@ -133,7 +150,7 @@ public class GameManager
     }
 
     // checks up left to down right
-    private int checkNextUpLeft(int X, int Y)
+    private static int checkNextUpLeft(int X, int Y)
     {
         int NewX = X + 1;
         int NewY = Y - 1;
@@ -148,7 +165,7 @@ public class GameManager
         }
         return 0;
     }
-    private int checkNextDownRight(int X, int Y)
+    private static int checkNextDownRight(int X, int Y)
     {
         int NewX = X - 1;
         int NewY = Y + 1;
@@ -166,7 +183,7 @@ public class GameManager
 
 
     //checks up and down
-    private int checkNextUp(int X, int Y)
+    private static int checkNextUp(int X, int Y)
     {
         int NewX = X;
         int NewY = Y + 1;
@@ -181,7 +198,7 @@ public class GameManager
         }
         return 0;
     }
-    private int checkNextDown(int X, int Y)
+    private static int checkNextDown(int X, int Y)
     {
         int NewX = X;
         int NewY = Y - 1;
@@ -197,7 +214,7 @@ public class GameManager
         return 0;
     }
 
-    public boolean checkIfEmpty(View iB, char TURN)
+    public static boolean checkIfEmpty(View iB, char TURN)
     {
         // declares iB as an ImageButton (might be able to remove)
         ImageButton bb = (ImageButton) iB;
