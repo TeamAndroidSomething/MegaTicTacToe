@@ -10,6 +10,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.example.megatictactoe.logic.GameActivityActionListener;
 import com.example.megatictactoe.megatictactoe.R;
 
 
@@ -22,7 +24,7 @@ public class GameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_dyn);
+        setContentView(R.layout.game_activity);
 
         Bundle extras = getIntent().getExtras();
         TABLE_SIZE = extras.getInt("tiles");

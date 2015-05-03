@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.example.megatictactoe.megatictactoe.R;
 
 
-public class MenuActivityResume extends Activity implements View.OnClickListener {
+public class MenuActivity extends Activity implements View.OnClickListener {
 
     int TILE_SIZE;
     Boolean TileSelectorLayoutVisible = false;
@@ -23,7 +23,7 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_resume);
+        setContentView(R.layout.menu_activity);
 
         // Finding all of the Views
         bNewGame = (Button)findViewById(R.id.bNewGame);
@@ -121,14 +121,14 @@ public class MenuActivityResume extends Activity implements View.OnClickListener
             }
 
             case R.id.bNewGame:{
-                Intent myIntent = new Intent(MenuActivityResume.this, GameActivity.class);
+                Intent myIntent = new Intent(MenuActivity.this, GameActivity.class);
                 myIntent.putExtra("tiles", TILE_SIZE);
-                MenuActivityResume.this.startActivity(myIntent);
+                MenuActivity.this.startActivity(myIntent);
                 break;
             }
 
             case R.id.bResumeGame:{
-                Intent myIntent = new Intent(MenuActivityResume.this, GameActivity.class);
+                Intent myIntent = new Intent(MenuActivity.this, GameActivity.class);
                 myIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 startActivity(myIntent);
                 break;

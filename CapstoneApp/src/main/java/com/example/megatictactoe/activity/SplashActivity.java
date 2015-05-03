@@ -9,20 +9,20 @@ import android.view.MenuItem;
 import com.example.megatictactoe.megatictactoe.R;
 
 
-public class MainActivity extends Activity {
+public class SplashActivity extends Activity {
     private Handler mHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.splash_activity);
 
 
-        // delays 5 seconds then launches the MenuActivityResume
+        // delays 5 seconds then launches the MenuActivity
         mHandler.postDelayed(new Runnable() {
             public void run() {
-                Intent myIntent = new Intent(MainActivity.this, MenuActivityResume.class);
-                MainActivity.this.startActivity(myIntent);
-                MainActivity.this.finish();
+                Intent myIntent = new Intent(SplashActivity.this, MenuActivity.class);
+                SplashActivity.this.startActivity(myIntent);
+                SplashActivity.this.finish();
             }
         }, 5000);
     }
