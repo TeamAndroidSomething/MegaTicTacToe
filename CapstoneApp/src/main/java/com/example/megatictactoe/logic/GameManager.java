@@ -43,6 +43,8 @@ public class GameManager extends Application
 
     public static void CreateBoard (int boardSize)
     {
+        boardList = new ArrayList<ArrayList<String>>();
+
         // creates the ArrayList of ArrayLists and fills it with empty strings
         for(int i = 0; i < boardSize; i++)
         {
