@@ -123,13 +123,13 @@ public class MenuActivity extends Activity implements View.OnClickListener {
             case R.id.bNewGame:{
                 Intent myIntent = new Intent(MenuActivity.this, GameActivity.class);
                 myIntent.putExtra("tiles", TILE_SIZE);
-                MenuActivity.this.startActivity(myIntent);
+                startActivity(myIntent);
                 break;
             }
 
             case R.id.bResumeGame:{
                 Intent myIntent = new Intent(MenuActivity.this, GameActivity.class);
-                myIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                myIntent.putExtra("tiles", TILE_SIZE);
                 startActivity(myIntent);
                 break;
             }

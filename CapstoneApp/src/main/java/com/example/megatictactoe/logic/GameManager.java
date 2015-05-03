@@ -14,15 +14,18 @@ import java.util.ArrayList;
 public class GameManager extends Application
 {
     // Context to change and edit views
-    Context mContext;
-
-    // ArrayList View of the board
-    private static ArrayList<ArrayList<String>> boardList = new ArrayList<ArrayList<String>>();
+//    Context mContext;
 
     private static String lastTurn = "error";
     private static int lastX = -1;
     private static int lastY = -1;
     private static int boardSize = -1;
+
+    // ArrayList View of the board
+    public static ArrayList<ArrayList<String>> boardList = new ArrayList<ArrayList<String>>();
+
+    public static char TURN = 'X';
+    public static boolean GAMEWIN = false;
 
     public static void setBoardSize(int size)
     {
@@ -41,9 +44,6 @@ public class GameManager extends Application
             }
             boardList.add(row);
         }
-
-        //logs the board size, used in looking for winning condition
-//        this.boardSize = boardSize;
     }
 
     public static boolean checkForWin(View iB)
@@ -201,6 +201,8 @@ public class GameManager extends Application
         }
         return 0;
     }
+
+
     public static boolean checkIfEmpty(View iB, char TURN)
     {
         // declares iB as an ImageButton (might be able to remove)
@@ -213,8 +215,8 @@ public class GameManager extends Application
         String[] SplitString = tagNob.split("_");
 
         // Setting row and col values as Integers
-        int row = Integer.parseInt(SplitString[0]) - 1;
-        int col = Integer.parseInt(SplitString[1]) - 1;
+        int row = Integer.parseInt(SplitString[0]);
+        int col = Integer.parseInt(SplitString[1]);
 
         // checks if spot available if
         if (boardList.get(row).get(col).equals(""))

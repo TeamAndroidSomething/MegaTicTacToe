@@ -2,50 +2,39 @@ package com.example.megatictactoe.logic;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Vibrator;
 import android.view.View;
-import com.example.megatictactoe.logic.GameManager;
+
 import com.example.megatictactoe.megatictactoe.R;
 /**
  * modify by Yuan chen on 4/20/15.
  */
 public class GameActivityActionListener implements View.OnLongClickListener
 {
-    private char TURN;
-    private Context cont;
-//    private GameManager gm;
-    private boolean gameWin;
+    private Context context;
 
     public GameActivityActionListener(int TABLE_SIZE, Context cont)
     {
         // Context for editing views on activity
-        this.cont = cont;
+        this.context = cont;
 
         // Set default wining condition as false
-        this.gameWin = false;
-
-        // To apply vibrate feature to X,O selections
-        final Vibrator vib = (Vibrator) cont.getSystemService(Context.VIBRATOR_SERVICE);
+        GameManager.GAMEWIN = false;
 
         // Class object for handling game state checks
         GameManager.setBoardSize(TABLE_SIZE);
         GameManager.generateList();
-//        this.gm = new GameManager(TABLE_SIZE);
-
-        // Who's turn is it?  - defaults to X
-        TURN = 'X';
     }
 
     @Override
     public boolean onLongClick(View v)
     {
         // Add a boolean to freeze the turn of button state when wining occur
-        if(gameWin == false)
+        if(GameManager.GAMEWIN == false)
         {
-            if (GameManager.checkIfEmpty(v, TURN))
+            if (GameManager.checkIfEmpty(v, GameManager.TURN))
             {
-                gameWin = GameManager.checkForWin(v);
-                if (gameWin) {
+                GameManager.GAMEWIN = GameManager.checkForWin(v);
+                if (GameManager.GAMEWIN) {
                     displayWinDialog();
                 }
                 setButtonState(v);
@@ -57,9 +46,9 @@ public class GameActivityActionListener implements View.OnLongClickListener
 
     private void displayWinDialog()
     {
-        final Dialog dlg = new Dialog(cont);
+        final Dialog dlg = new Dialog(context);
         dlg.setContentView(R.layout.win_dialog);
-        dlg.setTitle(TURN + " wins!");
+        dlg.setTitle(GameManager.TURN + " wins!");
         dlg.show();
     }
 
@@ -68,18 +57,18 @@ public class GameActivityActionListener implements View.OnLongClickListener
     // Turn variable is flipped after marker placed.
     private void setButtonState(View iB)
     {
-        switch (TURN)
+        switch (GameManager.TURN)
         {
             case 'X':
-                iB.setBackground(cont.getResources().getDrawable(R.drawable.cell_button_x));
-                TURN = 'O';
+                iB.setBackground(context.getResources().getDrawable(R.drawable.cell_button_x));
+                GameManager.TURN = 'O';
                 break;
             case 'O':
-                iB.setBackground(cont.getResources().getDrawable(R.drawable.cell_button_o));
-                TURN = 'X';
+                iB.setBackground(context.getResources().getDrawable(R.drawable.cell_button_o));
+                GameManager.TURN = 'X';
                 break;
             default:
-                iB.setBackground(cont.getResources().getDrawable(R.drawable.cell_default));
+                iB.setBackground(context.getResources().getDrawable(R.drawable.cell_default));
                 break;
         }
     }

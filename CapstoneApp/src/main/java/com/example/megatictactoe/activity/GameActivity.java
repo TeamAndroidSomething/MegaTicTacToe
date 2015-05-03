@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.example.megatictactoe.logic.GameActivityActionListener;
+import com.example.megatictactoe.logic.GameManager;
 import com.example.megatictactoe.megatictactoe.R;
 
 
@@ -39,12 +40,12 @@ public class GameActivity extends Activity {
         buttonLongClickListener = new GameActivityActionListener(TABLE_SIZE,this);
 
         // Create game grid
-        for (int rowNum = 1; rowNum < TABLE_SIZE+1; rowNum++) {
+        for (int rowNum = 0; rowNum < TABLE_SIZE; rowNum++) {
             // create row and add to game Table in XML
             TableRow row = new TableRow(this);
             gameTable.addView(row);
             // Add buttons to the new row
-            for (int colNum = 1; colNum < TABLE_SIZE+1; colNum++) {
+            for (int colNum = 0; colNum < TABLE_SIZE; colNum++) {
 
                 //button name
                 String bName = "b" + rowNum + "_" + colNum;
@@ -56,7 +57,13 @@ public class GameActivity extends Activity {
                 buttons.put(bName, bTemp);
 
                 // set button background to drawable
-                bTemp.setBackground(getResources().getDrawable(R.drawable.cell_button));
+                if (GameManager.boardList.get(rowNum).get(colNum).equals("")) {
+                    bTemp.setBackground(getResources().getDrawable(R.drawable.cell_button));
+                } else if (GameManager.boardList.get(rowNum).get(colNum).equals("X")) {
+                    bTemp.setBackground(getResources().getDrawable(R.drawable.cell_button_x));
+                } else if (GameManager.boardList.get(rowNum).get(colNum).equals("O")) {
+                    bTemp.setBackground(getResources().getDrawable(R.drawable.cell_button_o));
+                }
 
                 // Add to button to row, via key
                 row.addView(buttons.get(bName));
