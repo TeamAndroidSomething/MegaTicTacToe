@@ -86,21 +86,21 @@ public class GameManager extends Application
                 }
             }
 
-        } else if (checkLefttoRight >= 5){
+        } if (checkLefttoRight >= 5){
             for(String buttonname : listLefttoRight){
                 if(visualBoard.containsKey(buttonname)){
                     visualBoard.get(buttonname).setBackground(backgroundRes);
                 }
             }
 
-        }  else if (checkDownLefttoUpRight >= 5){
+        } if (checkDownLefttoUpRight >= 5){
             for(String buttonname : listDownLefttoUpRight){
                 if(visualBoard.containsKey(buttonname)){
                     visualBoard.get(buttonname).setBackground(backgroundRes);
                 }
             }
 
-        }  else if (checkUpLefttoDownRight >= 5){
+        } if (checkUpLefttoDownRight >= 5){
             for(String buttonname : listUpLefttoDownRight){
                 if(visualBoard.containsKey(buttonname)){
                     visualBoard.get(buttonname).setBackground(backgroundRes);
