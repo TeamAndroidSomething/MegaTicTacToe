@@ -62,7 +62,6 @@ public class GameActivity extends Activity {
                 buttons.put(bName, bTemp);
 
                 // set button background to drawable
-                Log.v("errorid","got here");
                 if (board.get(rowNum-1).get(colNum-1).equals("")){
                     bTemp.setBackground(getResources().getDrawable(R.drawable.cell_button));
                 } else if(board.get(rowNum-1).get(colNum-1).equals("X")) {
@@ -118,6 +117,8 @@ public class GameActivity extends Activity {
         }
 
         */
+
+        GameManager.storeBoard(buttons);
     }
 
     @Override

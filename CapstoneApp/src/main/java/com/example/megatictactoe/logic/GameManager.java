@@ -2,10 +2,18 @@ package com.example.megatictactoe.logic;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TableLayout;
+
+import com.example.megatictactoe.megatictactoe.R;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by davidlescard on 3/30/15.
@@ -23,11 +31,47 @@ public class GameManager extends Application
     private static int lastX = -1;
     private static int lastY = -1;
 
+    private static Map<String, ImageButton> visualBoard;
+
     private static int boardSize = -1;
 
 
     public GameManager(){
 
+    }
+
+    public static ArrayList<String> getHighlight(Context cont){
+        ArrayList<String>  Highlight = new ArrayList<String>();
+        String Cord1 = "00";
+        Highlight.add(Cord1);
+
+        Drawable backgroundRes;
+
+        if (lastTurn.equals("X")){
+            backgroundRes = cont.getResources().getDrawable(R.drawable.cell_x_win);
+        } else if(lastTurn.equals("O")){
+            backgroundRes = cont.getResources().getDrawable(R.drawable.cell_o_win);
+        } else {
+            backgroundRes = cont.getResources().getDrawable(R.drawable.cell_default);
+        }
+        visualBoard.get("b" + (lastX + 1) + "_" + (lastY + 1)).setBackground(backgroundRes);
+
+        int checkUptoDown = checkNextUp(lastX, lastY)
+                + checkNextDown(lastX,lastY) + 1;
+        int checkLefttoRight = checkNextLeft(lastX, lastY)
+                + checkNextRight(lastX, lastY) + 1;
+        int checkDownLefttoUpRight = checkNextDownLeft(lastX, lastY)
+                + checkNextUpRight(lastX, lastY) + 1;
+        int checkUpLefttoDownRight = checkNextUpLeft(lastX, lastY)
+                + checkNextDownRight(lastX, lastY) + 1;
+
+        Log.v("errorid",checkUptoDown + " " + checkLefttoRight + " " + checkDownLefttoUpRight + " " + checkUpLefttoDownRight);
+
+        //for(String b : visualBoard.keySet()){
+        //    visualBoard.get(b).setBackground(cont.getResources().getDrawable(R.drawable.cell_o_win));
+       //}
+
+        return Highlight;
     }
 
     public static ArrayList<ArrayList<String>> getBoard(){
@@ -37,7 +81,6 @@ public class GameManager extends Application
     }
 
     public static int getBoardSize(){
-
         return boardSize;
     }
 
@@ -257,5 +300,10 @@ public class GameManager extends Application
 
         // spot not available since it didn't qualify the earlier check
         return false;
+    }
+
+    public static void storeBoard(Map<String, ImageButton> gameHast) {
+        GameManager.visualBoard = gameHast;
+
     }
 }

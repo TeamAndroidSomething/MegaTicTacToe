@@ -6,6 +6,9 @@ import android.os.Vibrator;
 import android.view.View;
 import com.example.megatictactoe.logic.GameManager;
 import com.example.megatictactoe.megatictactoe.R;
+
+import java.util.ArrayList;
+
 /**
  * modify by Yuan chen on 4/20/15.
  */
@@ -42,13 +45,15 @@ public class GameActivityActionListener implements View.OnLongClickListener
             if (GameManager.checkIfEmpty(v, TURN))
             {
                 gameWin = GameManager.checkForWin(v);
+                setButtonState(v);
                 if (gameWin) {
                     final Dialog dlg = new Dialog(cont);
                     dlg.setContentView(R.layout.win_dialog);
                     dlg.setTitle(TURN + " wins!");
                     dlg.show();
+                    ArrayList<String> highlight = GameManager.getHighlight(this.cont);
                 }
-                setButtonState(v);
+
             }
             return true;
         }
