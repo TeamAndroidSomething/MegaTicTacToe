@@ -27,7 +27,7 @@ public class GameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_dyn);
+        setContentView(R.layout.activity_game);
 
         TABLE_SIZE = GameManager.getBoardSize();
 
