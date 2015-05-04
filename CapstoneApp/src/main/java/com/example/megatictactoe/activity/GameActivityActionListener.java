@@ -49,9 +49,9 @@ public class GameActivityActionListener implements View.OnLongClickListener
                 if (gameWin) {
                     final Dialog dlg = new Dialog(cont);
                     dlg.setContentView(R.layout.win_dialog);
-                    dlg.setTitle(TURN + " wins!");
+                    dlg.setTitle(GameManager.lastTurn + " wins!");
                     dlg.show();
-                    ArrayList<String> highlight = GameManager.getHighlight(this.cont);
+                    GameManager.setHighlight(this.cont);
                 }
 
             }

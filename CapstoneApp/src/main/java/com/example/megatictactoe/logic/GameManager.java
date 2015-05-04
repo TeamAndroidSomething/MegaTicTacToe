@@ -12,7 +12,6 @@ import android.widget.TableLayout;
 import com.example.megatictactoe.megatictactoe.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -27,11 +26,17 @@ public class GameManager extends Application
     // ArrayList View of the board
     private static ArrayList<ArrayList<String>> boardList = new ArrayList<ArrayList<String>>();
 
-    private static String lastTurn = "error";
+    public static String lastTurn = "error";
     private static int lastX = -1;
     private static int lastY = -1;
 
     private static Map<String, ImageButton> visualBoard;
+
+    // keeps track of the pieces to highlight if game won
+    static ArrayList<String> listUptoDown = new ArrayList<String>();
+    static ArrayList<String> listLefttoRight = new ArrayList<String>();
+    static ArrayList<String> listDownLefttoUpRight = new ArrayList<String>();
+    static ArrayList<String> listUpLefttoDownRight = new ArrayList<String>();
 
     private static int boardSize = -1;
 
@@ -40,7 +45,7 @@ public class GameManager extends Application
 
     }
 
-    public static ArrayList<String> getHighlight(Context cont){
+    public static void setHighlight(Context cont){
         ArrayList<String>  Highlight = new ArrayList<String>();
         String Cord1 = "00";
         Highlight.add(Cord1);
@@ -54,8 +59,14 @@ public class GameManager extends Application
         } else {
             backgroundRes = cont.getResources().getDrawable(R.drawable.cell_default);
         }
-        visualBoard.get("b" + (lastX + 1) + "_" + (lastY + 1)).setBackground(backgroundRes);
 
+        // clears out the lists
+        listUptoDown = new ArrayList<String>();
+        listLefttoRight = new ArrayList<String>();
+        listDownLefttoUpRight = new ArrayList<String>();
+        listUpLefttoDownRight = new ArrayList<String>();
+
+        //generates the lists and sizes
         int checkUptoDown = checkNextUp(lastX, lastY)
                 + checkNextDown(lastX,lastY) + 1;
         int checkLefttoRight = checkNextLeft(lastX, lastY)
@@ -65,27 +76,49 @@ public class GameManager extends Application
         int checkUpLefttoDownRight = checkNextUpLeft(lastX, lastY)
                 + checkNextDownRight(lastX, lastY) + 1;
 
-        Log.v("errorid",checkUptoDown + " " + checkLefttoRight + " " + checkDownLefttoUpRight + " " + checkUpLefttoDownRight);
 
-        //for(String b : visualBoard.keySet()){
-        //    visualBoard.get(b).setBackground(cont.getResources().getDrawable(R.drawable.cell_o_win));
-       //}
+        // changes the pieces to be highlighted
+        visualBoard.get("b" + (lastX + 1) + "_" + (lastY + 1)).setBackground(backgroundRes);
+        if (checkUptoDown >= 5){
+            for(String buttonname : listUptoDown){
+                if(visualBoard.containsKey(buttonname)){
+                    visualBoard.get(buttonname).setBackground(backgroundRes);
+                }
+            }
 
-        return Highlight;
+        } else if (checkLefttoRight >= 5){
+            for(String buttonname : listLefttoRight){
+                if(visualBoard.containsKey(buttonname)){
+                    visualBoard.get(buttonname).setBackground(backgroundRes);
+                }
+            }
+
+        }  else if (checkDownLefttoUpRight >= 5){
+            for(String buttonname : listDownLefttoUpRight){
+                if(visualBoard.containsKey(buttonname)){
+                    visualBoard.get(buttonname).setBackground(backgroundRes);
+                }
+            }
+
+        }  else if (checkUpLefttoDownRight >= 5){
+            for(String buttonname : listUpLefttoDownRight){
+                if(visualBoard.containsKey(buttonname)){
+                    visualBoard.get(buttonname).setBackground(backgroundRes);
+                }
+            }
+
+        }
     }
 
     public static ArrayList<ArrayList<String>> getBoard(){
-
         return boardList;
-
     }
 
     public static int getBoardSize(){
         return boardSize;
     }
 
-    public static void CreateBoard (int boardSize)
-    {
+    public static void CreateBoard (int boardSize){
         boardList = new ArrayList<ArrayList<String>>();
 
         // creates the ArrayList of ArrayLists and fills it with empty strings
@@ -103,8 +136,7 @@ public class GameManager extends Application
         GameManager.boardSize = boardSize;
     }
 
-    public static boolean checkForWin(View iB)
-    {
+    public static boolean checkForWin(View iB){
         int checkUptoDown = checkNextUp(lastX, lastY)
                 + checkNextDown(lastX,lastY) + 1;
         int checkLefttoRight = checkNextLeft(lastX, lastY)
@@ -131,8 +163,7 @@ public class GameManager extends Application
     }
 
     // these two check from down left to up right for a win
-    private static int checkNextUpRight(int X, int Y)
-    {
+    private static int checkNextUpRight(int X, int Y){
         int NewX = X + 1;
         int NewY = Y + 1;
 
@@ -140,14 +171,14 @@ public class GameManager extends Application
         if((NewX < boardSize) & (NewY < boardSize)){
             if (boardList.get(NewX).get(NewY).equals(lastTurn))
             {
+                listDownLefttoUpRight.add("b" + (NewX + 1) + "_" + (NewY + 1));
                 return checkNextUpRight(NewX, NewY) + 1;
             }
         }
         return 0;
     }
 
-    private static int checkNextDownLeft(int X, int Y)
-    {
+    private static int checkNextDownLeft(int X, int Y){
         int NewX = X - 1;
         int NewY = Y - 1;
 
@@ -156,6 +187,7 @@ public class GameManager extends Application
         {
             if (boardList.get(NewX).get(NewY).equals(lastTurn))
             {
+                listDownLefttoUpRight.add("b" + (NewX + 1) + "_" + (NewY + 1));
                 return checkNextDownLeft(NewX, NewY) + 1;
             }
         }
@@ -163,8 +195,7 @@ public class GameManager extends Application
     }
 
     // checks left to right
-    private static int checkNextRight(int X, int Y)
-    {
+    private static int checkNextRight(int X, int Y){
         int NewX = X + 1;
         int NewY = Y;
 
@@ -173,13 +204,14 @@ public class GameManager extends Application
         {
             if (boardList.get(NewX).get(NewY).equals(lastTurn))
             {
+                listLefttoRight.add("b" + (NewX + 1) + "_" + (NewY + 1));
                 return checkNextRight(NewX, NewY) + 1;
             }
         }
         return 0;
     }
-    private static int checkNextLeft(int X, int Y)
-    {
+
+    private static int checkNextLeft(int X, int Y){
         int NewX = X - 1;
         int NewY = Y;
 
@@ -188,6 +220,7 @@ public class GameManager extends Application
         {
             if (boardList.get(NewX).get(NewY).equals(lastTurn))
             {
+                listLefttoRight.add("b" + (NewX + 1) + "_" + (NewY + 1));
                 return checkNextLeft(NewX, NewY) + 1;
             }
         }
@@ -195,8 +228,7 @@ public class GameManager extends Application
     }
 
     // checks up left to down right
-    private static int checkNextUpLeft(int X, int Y)
-    {
+    private static int checkNextUpLeft(int X, int Y){
         int NewX = X + 1;
         int NewY = Y - 1;
 
@@ -205,13 +237,13 @@ public class GameManager extends Application
         {
             if (boardList.get(NewX).get(NewY).equals(lastTurn))
             {
+                listUpLefttoDownRight.add("b" + (NewX + 1) + "_" + (NewY + 1));
                 return checkNextUpLeft(NewX, NewY) + 1;
             }
         }
         return 0;
     }
-    private static int checkNextDownRight(int X, int Y)
-    {
+    private static int checkNextDownRight(int X, int Y){
         int NewX = X - 1;
         int NewY = Y + 1;
 
@@ -220,6 +252,7 @@ public class GameManager extends Application
         {
             if (boardList.get(NewX).get(NewY).equals(lastTurn))
             {
+                listUpLefttoDownRight.add("b" + (NewX + 1) + "_" + (NewY + 1));
                 return checkNextDownRight(NewX, NewY) + 1;
             }
         }
@@ -228,8 +261,7 @@ public class GameManager extends Application
 
 
     //checks up and down
-    private static int checkNextUp(int X, int Y)
-    {
+    private static int checkNextUp(int X, int Y){
         int NewX = X;
         int NewY = Y + 1;
 
@@ -238,13 +270,14 @@ public class GameManager extends Application
         {
             if (boardList.get(NewX).get(NewY).equals(lastTurn))
             {
+                listUptoDown.add("b" + (NewX + 1) + "_" + (NewY + 1));
                 return checkNextUp(NewX, NewY) + 1;
             }
         }
         return 0;
     }
-    private static int checkNextDown(int X, int Y)
-    {
+
+    private static int checkNextDown(int X, int Y){
         int NewX = X;
         int NewY = Y - 1;
 
@@ -253,14 +286,14 @@ public class GameManager extends Application
         {
             if (boardList.get(NewX).get(NewY).equals(lastTurn))
             {
+                listUptoDown.add("b" + (NewX + 1) + "_" + (NewY+ 1));
                 return checkNextDown(NewX, NewY) + 1;
             }
         }
         return 0;
     }
 
-    public static boolean checkIfEmpty(View iB, char TURN)
-    {
+    public static boolean checkIfEmpty(View iB, char TURN){
         // declares iB as an ImageButton (might be able to remove)
         ImageButton bb = (ImageButton) iB;
 
