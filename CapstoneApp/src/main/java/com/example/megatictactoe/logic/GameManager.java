@@ -79,28 +79,28 @@ public class GameManager extends Application
 
         // changes the pieces to be highlighted
         visualBoard.get("b" + (lastX + 1) + "_" + (lastY + 1)).setBackground(backgroundRes);
-        if (checkUptoDown >= 5){
+        if (checkUptoDown == 5){
             for(String buttonname : listUptoDown){
                 if(visualBoard.containsKey(buttonname)){
                     visualBoard.get(buttonname).setBackground(backgroundRes);
                 }
             }
 
-        } if (checkLefttoRight >= 5){
+        } if (checkLefttoRight == 5){
             for(String buttonname : listLefttoRight){
                 if(visualBoard.containsKey(buttonname)){
                     visualBoard.get(buttonname).setBackground(backgroundRes);
                 }
             }
 
-        } if (checkDownLefttoUpRight >= 5){
+        } if (checkDownLefttoUpRight == 5){
             for(String buttonname : listDownLefttoUpRight){
                 if(visualBoard.containsKey(buttonname)){
                     visualBoard.get(buttonname).setBackground(backgroundRes);
                 }
             }
 
-        } if (checkUpLefttoDownRight >= 5){
+        } if (checkUpLefttoDownRight == 5){
             for(String buttonname : listUpLefttoDownRight){
                 if(visualBoard.containsKey(buttonname)){
                     visualBoard.get(buttonname).setBackground(backgroundRes);
@@ -152,8 +152,8 @@ public class GameManager extends Application
                 + " DownLeft,UpRight:" + checkDownLefttoUpRight
                 +  " UpLeft,DownRight:" + checkUpLefttoDownRight);
 
-        if ( (checkUptoDown >= 5) || (checkLefttoRight >= 5) || (checkDownLefttoUpRight >= 5)
-                || (checkUpLefttoDownRight >= 5) )
+        if ( (checkUptoDown == 5) || (checkLefttoRight == 5) || (checkDownLefttoUpRight == 5)
+                || (checkUpLefttoDownRight == 5) )
         {
             // check if board is entirely full and no one can move.
             Log.v("errorid","WIN");

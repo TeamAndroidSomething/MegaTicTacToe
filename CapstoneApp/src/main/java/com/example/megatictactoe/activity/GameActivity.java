@@ -83,41 +83,6 @@ public class GameActivity extends Activity {
 
             }
         }
-
-
-        /*
-        // Create game grid
-        for (int rowNum = 1; rowNum < TABLE_SIZE + 1; rowNum++) {
-            // create row and add to game Table in XML
-            TableRow row = new TableRow(this);
-            gameTable.addView(row);
-            // Add buttons to the new row
-            for (int colNum = 1; colNum < TABLE_SIZE+1; colNum++) {
-
-                //button name
-                String bName = "b" + rowNum + "_" + colNum;
-
-                // Temp button created for each button
-                ImageButton bTemp = new ImageButton(this);
-
-                // provide button with map key i.e. "b1_15" for row 1, column 15
-                buttons.put(bName, bTemp);
-
-                // set button background to drawable
-                bTemp.setBackground(getResources().getDrawable(R.drawable.cell_button));
-
-                // Add to button to row, via key
-                row.addView(buttons.get(bName));
-
-                // Add longClick action to button, via key
-                bTemp.setLongClickable(true);
-                bTemp.setTag(bName);
-                bTemp.setOnLongClickListener(buttonLongClickListener);
-            }
-        }
-
-        */
-
         GameManager.storeBoard(buttons);
     }
 
