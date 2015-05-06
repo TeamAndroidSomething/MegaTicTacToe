@@ -1,15 +1,13 @@
-package com.example.megatictactoe.logic;
+package com.teamAndroidSomething.megatictactoe.logic;
 
 import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TableLayout;
 
-import com.example.megatictactoe.megatictactoe.R;
+import com.teamAndroidSomething.megatictactoe.megatictactoe.R;
 
 import java.util.ArrayList;
 import java.util.Map;

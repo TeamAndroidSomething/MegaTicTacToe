@@ -1,7 +1,7 @@
-package com.example.megatictactoe.megatictactoe.test;
+package com.teamAndroidSomething.megatictactoe.megatictactoe.test.test;
 
-import com.example.megatictactoe.activity.SplashActivity;
-import com.example.megatictactoe.activity.MenuActivity;
+import com.teamAndroidSomething.megatictactoe.activity.SplashActivity;
+import com.teamAndroidSomething.megatictactoe.activity.MenuActivity;
 import com.robotium.solo.*;
 import android.test.ActivityInstrumentationTestCase2;
 
@@ -43,10 +43,10 @@ public class multi_directional_win extends ActivityInstrumentationTestCase2<Spla
         solo.takeScreenshot();
         //Take screenshot
         solo.takeScreenshot();
-        //Wait for activity: 'com.example.megatictactoe.activity.SplashActivity'
+        //Wait for activity: 'com.teamAndroidSomething.megatictactoe.activity.SplashActivity'
 		solo.waitForActivity(SplashActivity.class, 2000);
-        //Wait for activity: 'com.example.megatictactoe.activity.MenuActivity'
-		assertTrue("com.example.megatictactoe.activity.MenuActivity is not found!", solo.waitForActivity(MenuActivity.class));
+        //Wait for activity: 'com.teamAndroidSomething.megatictactoe.activity.MenuActivity'
+		assertTrue("com.teamAndroidSomething.megatictactoe.activity.MenuActivity is not found!", solo.waitForActivity(MenuActivity.class));
         //Click on (502.0, 440.0)
 		solo.clickOnScreen(502.0F, 440.0F);
         //Click on (320.0, 634.0)
@@ -57,8 +57,8 @@ public class multi_directional_win extends ActivityInstrumentationTestCase2<Spla
 		Timeout.setSmallTimeout(10564);
         //Click on (429.0, 159.0)
 		solo.clickOnScreen(429.0F, 159.0F);
-        //Wait for activity: 'com.example.megatictactoe.activity.GameActivity'
-		assertTrue("com.example.megatictactoe.activity.GameActivity is not found!", solo.waitForActivity(com.example.megatictactoe.activity.GameActivity.class));
+        //Wait for activity: 'com.teamAndroidSomething.megatictactoe.activity.GameActivity'
+		assertTrue("com.teamAndroidSomething.megatictactoe.activity.GameActivity is not found!", solo.waitForActivity(com.teamAndroidSomething.megatictactoe.activity.GameActivity.class));
         //Set default small timeout to 14141 milliseconds
 		Timeout.setSmallTimeout(14141);
         //Long click ImageView

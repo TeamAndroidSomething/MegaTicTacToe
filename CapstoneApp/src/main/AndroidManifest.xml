@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.megatictactoe.megatictactoe" >
+    package="com.teamAndroidSomething.megatictactoe.megatictactoe" >
 
     <uses-permission android:name="android.permission.VIBRATE"/>
 
-    <application android:name="com.example.megatictactoe.logic.GameManager"
+    <application android:name="com.teamAndroidSomething.megatictactoe.logic.GameManager"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.megatictactoe.activity.SplashActivity"
+            android:name="com.teamAndroidSomething.megatictactoe.activity.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
@@ -22,7 +22,7 @@
 
         </activity>
         <activity
-            android:name="com.example.megatictactoe.activity.GameActivity"
+            android:name="com.teamAndroidSomething.megatictactoe.activity.GameActivity"
             android:label="@string/title_activity_game"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
@@ -31,7 +31,7 @@
 
         </activity>
         <activity
-            android:name="com.example.megatictactoe.activity.MenuActivity"
+            android:name="com.teamAndroidSomething.megatictactoe.activity.MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>

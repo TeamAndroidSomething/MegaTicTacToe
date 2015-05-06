@@ -1,4 +1,4 @@
-package com.example.megatictactoe.activity;
+package com.teamAndroidSomething.megatictactoe.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.megatictactoe.logic.GameManager;
-import com.example.megatictactoe.megatictactoe.R;
+import com.teamAndroidSomething.megatictactoe.logic.GameManager;
+import com.teamAndroidSomething.megatictactoe.megatictactoe.R;
 
 
 public class GameActivity extends Activity {

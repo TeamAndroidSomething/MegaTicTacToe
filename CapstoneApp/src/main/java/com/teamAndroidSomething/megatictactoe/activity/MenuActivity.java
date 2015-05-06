@@ -1,4 +1,4 @@
-package com.example.megatictactoe.activity;
+package com.teamAndroidSomething.megatictactoe.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.megatictactoe.logic.GameManager;
-import com.example.megatictactoe.megatictactoe.R;
+import com.teamAndroidSomething.megatictactoe.logic.GameManager;
+import com.teamAndroidSomething.megatictactoe.megatictactoe.R;
 
 
 public class MenuActivity extends Activity implements View.OnClickListener {

@@ -1,13 +1,11 @@
-package com.example.megatictactoe.activity;
+package com.teamAndroidSomething.megatictactoe.activity;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Vibrator;
 import android.view.View;
-import com.example.megatictactoe.logic.GameManager;
-import com.example.megatictactoe.megatictactoe.R;
-
-import java.util.ArrayList;
+import com.teamAndroidSomething.megatictactoe.logic.GameManager;
+import com.teamAndroidSomething.megatictactoe.megatictactoe.R;
 
 /**
  * modify by Yuan chen on 4/20/15.
